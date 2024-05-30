@@ -1,6 +1,7 @@
 package com.flawden.FAQ.controller;
 
 import com.flawden.FAQ.model.Question;
+import com.flawden.FAQ.service.ExaminerServiceImpl;
 import com.flawden.FAQ.service.interfaces.QuestionService;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,9 +12,11 @@ import java.util.Collection;
 public class JavaQuestionController {
 
     private final QuestionService questionService;
+    private final ExaminerServiceImpl examinerService;
 
-    public JavaQuestionController(QuestionService questionService) {
+    public JavaQuestionController(QuestionService questionService, ExaminerServiceImpl examinerService) {
         this.questionService = questionService;
+        this.examinerService = examinerService;
     }
 
     @PostMapping("/add")
@@ -40,8 +43,13 @@ public class JavaQuestionController {
     }
 
     @GetMapping("/random")
-    private Question getRandom() {
+    private Question getRandomQuestion() {
         return questionService.getRandom();
+    }
+
+    @GetMapping("/random-question")
+    private Collection<Question> getRandomQuestions(@RequestParam int amount) {
+        return examinerService.getQuestions(amount);
     }
 
 }

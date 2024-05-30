@@ -31,6 +31,6 @@ public class ExaminerServiceImpl implements ExaminerService {
         while (questions.size() < amount) {
             questions.add(javaQuestionService.getRandom());
         }
-        return null;
+        return questions;
     }
 }

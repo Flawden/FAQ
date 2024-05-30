@@ -43,7 +43,7 @@ public class JavaQuestionService implements QuestionService {
     @Override
     public Question getRandom() {
         List<Question> questions = questionRepository.findAll();
-        return questions.get(rnd.nextInt(0, questions.size()-1));
+        return questions.get(rnd.nextInt(0, questions.size()));
     }
 
     public long questionsAmount() {

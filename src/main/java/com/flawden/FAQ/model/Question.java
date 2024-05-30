@@ -1,9 +1,6 @@
 package com.flawden.FAQ.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Objects;
@@ -14,6 +11,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Entity
 @Data
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "question"))
 public class Question {
 
     @Id
