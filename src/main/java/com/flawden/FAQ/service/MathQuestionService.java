@@ -1,5 +1,6 @@
 package com.flawden.FAQ.service;
 
+import com.flawden.FAQ.enums.QuestionTypes;
 import com.flawden.FAQ.model.MathQuestion;
 import com.flawden.FAQ.model.Question;
 import com.flawden.FAQ.repository.QuestionRepository;
@@ -34,22 +35,26 @@ public class MathQuestionService implements QuestionService {
 
     @Override
     public Question remove(Question question) {
-        questionRepository.delete(question);
-        return question;
+        boolean isSucces = questionRepository.deleteQuestionByQuestionAndQuestionType(question.getQuestion(), QuestionTypes.MATH.getType());
+        if (isSucces) {
+            return question;
+        } else {
+            throw new IllegalArgumentException("Ошибка удаления! Данного вопроса не существует среди вопросов данного типа.");
+        }
     }
 
     @Override
     public Collection<Question> getAll() {
-        return questionRepository.findAll();
+        return questionRepository.findQuestionsByQuestionType(QuestionTypes.MATH.getType());
     }
 
     @Override
     public Question getRandom() {
-        List<Question> questions = questionRepository.findAll();
+        List<Question> questions = questionRepository.findQuestionsByQuestionType(QuestionTypes.MATH.getType());
         return questions.get(rnd.nextInt(0, questions.size()));
     }
 
     public long questionsAmount() {
-        return questionRepository.findAll().size();
+        return questionRepository.findQuestionsByQuestionType(QuestionTypes.MATH.getType()).size();
     }
 }

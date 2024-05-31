@@ -53,7 +53,7 @@ public class MathQuestionController {
 
     @GetMapping("/random-question")
     private Collection<Question> getRandomQuestions(@RequestParam int amount) {
-        return examinerService.getQuestions(amount);
+        return examinerService.getMathQuestions(amount);
     }
 
 }

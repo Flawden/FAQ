@@ -1,5 +1,6 @@
 package com.flawden.FAQ.model;
 
+import com.flawden.FAQ.enums.QuestionTypes;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
