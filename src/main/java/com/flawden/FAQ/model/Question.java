@@ -2,23 +2,34 @@ package com.flawden.FAQ.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
+@Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-@Data
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "question"))
-public class Question {
+@Inheritance
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
+@Table(uniqueConstraints= @UniqueConstraint(columnNames={"question"}) )
+public abstract class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String question;
-    private String answer;
+    @Column
+    protected long id;
+
+    @Column
+    protected String question;
+
+    @Column
+    protected String answer;
+
+    @Column
+    protected String questionType;
+
+    public Question() {
+    }
 
     public Question(String question, String answer) {
         this.question = question;

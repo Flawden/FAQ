@@ -1,6 +1,5 @@
 package com.flawden.FAQ.service;
 
-import com.flawden.FAQ.model.JavaQuestion;
 import com.flawden.FAQ.model.MathQuestion;
 import com.flawden.FAQ.model.Question;
 import com.flawden.FAQ.repository.QuestionRepository;
@@ -13,19 +12,19 @@ import java.util.List;
 import java.util.Random;
 
 @Service
-@Qualifier("javaQuestionService")
-public class JavaQuestionService implements QuestionService {
+@Qualifier("mathQuestionService")
+public class MathQuestionService implements QuestionService {
 
     private final QuestionRepository questionRepository;
     private final Random rnd = new Random();
 
-    public JavaQuestionService(QuestionRepository questionRepository) {
+    public MathQuestionService(QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
     }
 
     @Override
     public Question add(String question, String answer) {
-        return questionRepository.save(new JavaQuestion(question, answer));
+        return questionRepository.save(new MathQuestion(question, answer));
     }
 
     @Override
