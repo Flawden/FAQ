@@ -32,7 +32,7 @@ public class ExaminerServiceImpl implements ExaminerService {
             throw new IllegalArgumentException("Значение не может быть ниже или равно нулю.");
         }
         List<Question> questions = questionRepository.findAll();
-        long questionsAmount = questions.size();;
+        long questionsAmount = questions.size();
         if (questionsAmount < amount) {
             throw new RuntimeException("В базе не хранится столько вопросов.");
         }
