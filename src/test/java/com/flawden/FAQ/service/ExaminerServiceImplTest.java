@@ -5,7 +5,6 @@ import com.flawden.FAQ.model.JavaQuestion;
 import com.flawden.FAQ.model.MathQuestion;
 import com.flawden.FAQ.model.Question;
 import com.flawden.FAQ.repository.QuestionRepository;
-import com.flawden.FAQ.service.interfaces.ExaminerService;
 import com.flawden.FAQ.service.interfaces.QuestionService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,10 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static org.mockito.Mockito.when;
 
