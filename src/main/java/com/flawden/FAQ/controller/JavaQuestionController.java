@@ -25,7 +25,7 @@ public class JavaQuestionController {
     }
 
     @PostMapping("/add")
-    private Question add(@RequestParam String question, @RequestParam String answer) {
+    public Question add(@RequestParam String question, @RequestParam String answer) {
         if(question.isBlank() || answer.isBlank()) {
             throw new RuntimeException("Ошибка! Значение полей question и answer не могут быть пустыми!");
         }
@@ -33,27 +33,27 @@ public class JavaQuestionController {
     }
 
     @PostMapping("/add-by-body")
-    private Question add(@RequestBody JavaQuestion question) {
+    public Question add(@RequestBody JavaQuestion question) {
         return questionService.add(question);
     }
 
     @DeleteMapping("/remove")
-    private Question remove(@RequestBody JavaQuestion question) {
+    public Question remove(@RequestBody JavaQuestion question) {
         return questionService.remove(question);
     }
 
     @GetMapping
-    private Collection<? extends Question> getAll() {
+    public Collection<? extends Question> getAll() {
         return questionService.getAll();
     }
 
     @GetMapping("/random")
-    private Question getRandomQuestion() {
+    public Question getRandomQuestion() {
         return questionService.getRandom();
     }
 
     @GetMapping("/random-question")
-    private Collection<Question> getRandomQuestions(@RequestParam int amount) {
+    public Collection<Question> getRandomQuestions(@RequestParam int amount) {
         return examinerService.getJavaQuestions(amount);
     }
 

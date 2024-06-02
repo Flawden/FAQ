@@ -20,22 +20,22 @@ public class ExamController {
     }
 
     @DeleteMapping("/remove")
-    private Question remove(@RequestBody Question question) {
+    public Question remove(@RequestBody Question question) {
         return allQuestionsService.remove(question);
     }
 
     @GetMapping
-    private Collection<Question> getAll() {
+    public Collection<Question> getAll() {
         return allQuestionsService.getAll();
     }
 
     @GetMapping("/random")
-    private Question getRandomQuestion() {
+    public Question getRandomQuestion() {
         return allQuestionsService.getRandom();
     }
 
     @GetMapping("/random-questions")
-    private Collection<Question> getRandomQuestions(@RequestParam int amount) {
+    public Collection<Question> getRandomQuestions(@RequestParam int amount) {
         return examinerService.getQuestions(amount);
     }
 
